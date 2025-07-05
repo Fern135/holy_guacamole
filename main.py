@@ -1,21 +1,13 @@
 import pygame
 from sys import exit
+from styles.colors import COLORS
 
 width  = 900
 height = 900
 
 pygame.init()
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode(( width, height ))
 clock = pygame.time.Clock()
-
-colors = {
-    "red"   : (255, 0, 0),
-    "green" : (0, 255, 0),
-    "blue"  : (0, 0, 255),
-    "black" : (0, 0, 0),
-    "white" : (255, 255, 255),
-}
-
 
 while True:
     for event in pygame.event.get():
@@ -23,8 +15,8 @@ while True:
             pygame.quit()
             exit()
 
-    screen.fill(colors['black'])
-    #game code
+    screen.fill(COLORS['maroon'])
+    # game code
 
 
     pygame.display.update()
