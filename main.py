@@ -4,6 +4,7 @@ from styles.colors import COLORS
 from src.Player.Player import Player
 from src.Platform import Platform
 from src.Enemies.Enemies import Enemy
+from levels.levels import demo
 
 WIDTH, HEIGHT = 900, 900
 
@@ -15,19 +16,23 @@ clock  = pygame.time.Clock()
 # Chain setConfig() → spawn() to attach the screen and set start position
 player = Player().setConfig(screen, WIDTH, HEIGHT).spawn(120, 120)
 
-# Some demo platforms (x, y, w, h)
-platforms = [
-    Platform(100, 700, 300, 20, solid=True,  color=COLORS['green']),  # ground-ish
-    Platform(500, 500, 150, 20, solid=True,  color=COLORS['blue']),   # floating
-    Platform(400, 600, 100, 50, True),
-    Platform(200, 400, 150, 10, solid=False, color=COLORS['maroon']), # decorative
-]
+# # Some demo platforms (x, y, w, h)
+# platforms = [
+#     Platform(100, 700, 300, 20, solid=True,  color=COLORS['green']),  # ground-ish
+#     Platform(500, 500, 150, 20, solid=True,  color=COLORS['blue']),   # floating
+#     Platform(400, 600, 100, 50, True),
+#     Platform(200, 400, 150, 10, solid=False, color=COLORS['maroon']), # decorative
+# ]
 
 # A couple of patrolling enemies
 enemies = [
     Enemy(550, 470, 30, 30),  # sits on the blue platform
     Enemy(150, 670, 30, 30),  # sits on the green one
 ]
+
+def drawPlatforms(platform):
+    for p in platform:
+        p.draw(screen)
 
 # ----- Game loop -----
 while True:
@@ -41,8 +46,7 @@ while True:
     screen.fill(COLORS['black'])
 
     # Draw platforms
-    for p in platforms:
-        p.draw(screen)
+    drawPlatforms(demo)
 
     # Update and draw enemies
     for e in enemies:
@@ -50,7 +54,7 @@ while True:
         e.draw(screen)
 
     # Update player (handles input, gravity, collisions, drawing)
-    player.update(platforms, enemies)
+    player.update(demo, enemies)
 
     # Flip buffers
     pygame.display.update()
