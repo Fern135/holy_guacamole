@@ -78,10 +78,10 @@ class Player:
 
     def physics(self, platforms):
         """
-        Robust vertical collision:
-        1) Apply gravity to vy
-        2) Predict future rect
-        3) If we cross a platform edge this frame, snap to it
+            Robust vertical collision:
+            1) Apply gravity to vy
+            2) Predict future rect
+            3) If we cross a platform edge this frame, snap to it
         """
         prev_rect   = self.rect()              # where we were
         self.vy    += GRAVITY                  # accel down
@@ -135,9 +135,9 @@ class Player:
 
     def check_enemy_hits(self, enemies):
         """
-        Simple enemy collision logic:
-          - If falling and hit from above: stomp enemy.
-          - Else: take damage.
+            Simple enemy collision logic:
+            - If falling and hit from above: stomp enemy.
+            - Else: take damage.
         """
         player_rect = self.rect()
         for enemy in enemies:
@@ -153,14 +153,14 @@ class Player:
 
     def take_damage(self, amount):
         """
-        Reduce health. Add knockback, invincibility frames, etc. if desired.
+            Reduce health. Add knockback, invincibility frames, etc. if desired.
         """
         self.health -= amount
         # TODO: implement invincibility / knockback
 
     def draw(self):
         """
-        Render the player as a white circle.
+            Render the player as a white circle.
         """
         pygame.draw.circle(
             self.surface,
