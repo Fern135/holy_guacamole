@@ -4,7 +4,7 @@ from styles.colors import COLORS
 from src.Player.Player import Player
 from src.Platform import Platform
 from src.Enemies.Enemies import Enemy
-from levels.levels import demo
+from levels.levels import demo, level_1
 
 WIDTH, HEIGHT = 900, 900
 
